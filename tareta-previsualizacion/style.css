@@ -2,6 +2,7 @@
 
 :root {
     --primary-clr-green: hsl(158, 36%, 37%);
+    --primary-clr-greenest: hsl(158, 36%, 20%);
     --secondary-clr-crema: hsl(30, 38%, 92%);
 
     --neutral-clr-900: hsl(212, 21%, 14%);
@@ -39,8 +40,14 @@
     5. Improve text rendering
   */
   body {
-    line-height: 1.5;
+    line-height: 1.8;
     -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
   }
   /*
     6. Improve media defaults
@@ -66,25 +73,102 @@
   /* general styling */
 
   body {
-    padding: 1rem;
-    font-size: 15px;
     font-family: var(--ff-base);
     font-weight: var(--fw-regular);
+    font-size: 15px;
     color: var(--neutral-clr-400);
     background-color: var(--secondary-clr-crema);
 
     /* only for this project */
     display: grid;
+    min-height: 100vh;
     place-content: center;
+    margin: 1rem;
 
   }
 
   .flex-group {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
+  .product {
+    --pading-product: 1.7rem;
+    --spacing-product: 1.2rem;
+    background-color: var(--neutral-clr-200);
+    border-radius: .6rem;
+    overflow: hidden;
+  }
 
+  .product__content {
+    padding: var(--pading-product);
+    display: grid;
+    gap: var(--spacing-product);
+  }
 
+  .product__category {
+    font-size: .9378rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
 
+  .product__title {
+    font-size: 2rem;
+    font-family: var(--ff-sub);
+    color: var(--neutral-clr-900);
+  }
+
+  .product__price {
+    font-size: 2rem;
+    font-family: var(--ff-sub);
+    color: var(--primary-clr-green);
+  }
+
+  .visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  }
+
+  .btn {
+    text-decoration: none;
+    border: 0;
+    border-radius: .5rem;
+    display: inline-flex;
+    gap: .75rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: .75rem 1.5rem;
+    background-color: var(--primary-clr-green);
+    color: var(--neutral-clr-200);
+    font-weight: var(--fw-bold);
+    font-size: .9rem;
+    transition: .15s;
+  }
+
+  .btn:is(:hover, :focus) {
+    background-color: var(--primary-clr-greenest);
+  }
+
+  .btn[data-icon="shopping-cart"]::before {
+    background-image: url(./images/icon-cart.svg);
+    content: "";
+    height: 15px;
+    width: 16px;
+  }
+
+  @media only screen and (min-width: 642px) {
+    .product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
 
